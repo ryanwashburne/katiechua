@@ -1,5 +1,13 @@
 /*! purgecss start ignore */
 @tailwind base;
+
+a {
+  @apply underline;
+}
+a:hover {
+  @apply text-gray-700;
+}
+
 @tailwind components;
 /*! purgecss end ignore */
 @tailwind utilities;

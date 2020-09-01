@@ -1,49 +1,30 @@
-import PropTypes from "prop-types";
-import React from "react";
+import React from 'react'
+import { Link } from 'gatsby'
 
-import Header from "./header";
+import SEO from './seo'
 
-function Layout({ children }) {
+export default ({ title = '', padding = true, children }) => {
   return (
-    <div className="flex flex-col min-h-screen font-sans text-gray-900">
-      <Header />
-
-      <main className="flex-1 w-full max-w-4xl px-4 py-8 mx-auto md:px-8 md:py-16">
-        {children}
-      </main>
-
-      <footer className="bg-blue-700">
-        <nav className="flex justify-between max-w-4xl p-4 mx-auto text-sm md:p-8">
-          <p className="text-white">
-            Created by{` `}
-            <a
-              className="font-bold no-underline"
-              href="https://bryant.io"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Taylor Bryant
-            </a>
-          </p>
-
-          <p>
-            <a
-              className="font-bold text-white no-underline"
-              href="https://github.com/taylorbryant/gatsby-starter-tailwind"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-          </p>
-        </nav>
+    <>
+      <SEO title={title} />
+      <header className="fixed top-0 w-full h-12">
+        <div className="px-4 lg:px-0 container mx-auto flex items-center h-full">
+          <div className="flex-grow">
+            <Link to="/">Katie Chua</Link>
+          </div>
+          <div className="flex items-center">
+            <Link to="/archive" className="mr-4">
+              Archive
+            </Link>
+            <Link to="/contact">Contact</Link>
+          </div>
+        </div>
+      </header>
+      <div className={`h-12 lg:h-${padding ? 12 : 0}`} />
+      <main className="px-4 lg:px-0 container mx-auto">{children}</main>
+      <footer className="absolute bottom-0 w-full border-r-2 border-gray-500 text-gray-500 text-center uppercase text-xs">
+        <p className="py-2">{new Date().getFullYear()} Katie Chua &copy;</p>
       </footer>
-    </div>
-  );
+    </>
+  )
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default Layout;
