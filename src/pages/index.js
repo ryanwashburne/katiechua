@@ -23,8 +23,8 @@ export default () => {
   return (
     <Layout padding={false}>
       <section className="lg:h-screen grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="flex items-center">
-          <h1 className="text-2xl lg:text-6xl font-bold">
+        <div className="flex items-center justify-center lg:justify-start text-center lg:text-left">
+          <h1 className="text-4xl lg:text-6xl font-bold">
             Hi.
             <br />
             I&apos;m{' '}

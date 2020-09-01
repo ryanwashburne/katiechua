@@ -14,7 +14,7 @@ export default ({
   return (
     <Layout title={name}>
       <section>
-        <h1 className="text-5xl font-bold border-b">{name}</h1>
+        <h1 className="text-2xl lg:text-5xl font-bold border-b">{name}</h1>
         <div className="markdown" dangerouslySetInnerHTML={{ __html: html }} />
       </section>
     </Layout>

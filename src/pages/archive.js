@@ -41,13 +41,9 @@ export default () => {
               >
                 <div className="flex flex-col justify-center">
                   <h3 className="text-xl font-bold">{name}</h3>
-                  <p className="text-sm italic text-gray-700">
-                    {new Date().getDate()}
-                  </p>
                 </div>
                 <div className="flex flex-col justify-center">
                   {/* <Image fluid={fluid} /> */}
-                  <p>img</p>
                 </div>
               </Link>
             )

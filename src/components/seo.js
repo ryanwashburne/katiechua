@@ -49,8 +49,11 @@ function SEO({ description, lang, meta, keywords, title }) {
             : [],
         )
         .concat(meta)}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={
+        title
+          ? `${title} | ${site.siteMetadata.title}`
+          : site.siteMetadata.title
+      }
     />
   )
 }
@@ -66,7 +69,7 @@ SEO.propTypes = {
   keywords: PropTypes.arrayOf(PropTypes.string),
   lang: PropTypes.string,
   meta: PropTypes.array,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default SEO

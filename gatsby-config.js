@@ -2,8 +2,7 @@ const resolveConfig = require('tailwindcss/resolveConfig')
 const tailwindConfig = require('./tailwind.config.js')
 
 const fullConfig = resolveConfig(tailwindConfig)
-const path = require('path')
-require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
@@ -20,7 +19,7 @@ module.exports = {
         short_name: `KC`,
         start_url: `/`,
         background_color: fullConfig.theme.colors.white,
-        theme_color: fullConfig.theme.colors.teal['400'],
+        theme_color: fullConfig.theme.colors.black,
         display: `minimal-ui`,
         icon: `src/images/favicon.svg`,
       },
