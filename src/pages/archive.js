@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
-import Image from 'gatsby-image'
 
 import Layout from '../components/layout'
 
@@ -9,12 +8,20 @@ export default () => {
     allGoogleDocs: { edges },
   } = useStaticQuery(graphql`
     query {
-      allGoogleDocs {
+      allGoogleDocs(sort: { fields: document___createdTime, order: DESC }) {
         edges {
           node {
+            childMarkdownRemark {
+              excerpt
+              timeToRead
+              frontmatter {
+                name
+              }
+            }
             document {
-              name
+              id
               path
+              createdTime(formatString: "MMMM do, y")
             }
           }
         }
@@ -28,20 +35,31 @@ export default () => {
           (
             {
               node: {
-                document: { name, path },
+                document: { id, path, createdTime },
+                childMarkdownRemark: {
+                  frontmatter: { name },
+                  excerpt,
+                  timeToRead,
+                },
               },
             },
             i,
           ) => {
             return (
               <Link
-                to={`/articles` + path}
+                to={`/articles/${id}${path}`}
                 key={i}
-                className="border no-underline w-64 h-64 mr-4 mb-4 relative flex justify-center items-center hover:bg-gray-100 hover:shadow"
+                className="border border-black no-underline w-full lg:w-64 h-48 lg:h-64 mr-2 mb-2 relative flex justify-center items-center hover:bg-gray-100 hover:shadow"
               >
-                <h3 className="font-mono text-xl font-bold">{name}</h3>
-                <p className="absolute text-sm" style={{ top: 5, left: 5 }}>
-                  September 2nd, 2020
+                <div className="p-2 truncate w-full text-center">
+                  <h3 className="font-mono text-xl font-bold">{name}</h3>
+                  <p className="text-xs truncate w-full">{excerpt}</p>
+                </div>
+                <p className="p-2 absolute text-xs italic text-gray-700 top-0 left-0">
+                  {createdTime}
+                </p>
+                <p className="p-2 absolute text-xs italic text-gray-700 bottom-0 left-0">
+                  {timeToRead} minute read
                 </p>
               </Link>
             )

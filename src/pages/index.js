@@ -13,8 +13,8 @@ export default () => {
     query {
       file(relativePath: { eq: "profile.jpg" }) {
         childImageSharp {
-          fluid(grayscale: true) {
-            ...GatsbyImageSharpFluid
+          fluid(grayscale: true, maxWidth: 400) {
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }

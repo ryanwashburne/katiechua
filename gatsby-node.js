@@ -11,6 +11,7 @@ exports.createPages = async ({
         allGoogleDocs {
           nodes {
             document {
+              id
               path
             }
           }
@@ -27,9 +28,9 @@ exports.createPages = async ({
     const { allGoogleDocs } = result.data
 
     if (allGoogleDocs) {
-      allGoogleDocs.nodes.forEach(({ document: { path } }) => {
+      allGoogleDocs.nodes.forEach(({ document: { id, path } }) => {
         createPage({
-          path: `/articles` + path,
+          path: `/articles/${id}${path}`,
           component: resolve(`src/templates/article.js`),
           context: {
             slug: path,

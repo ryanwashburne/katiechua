@@ -49,12 +49,21 @@ module.exports = {
       resolve: `gatsby-source-google-docs`,
       options: {
         folders: [process.env.GOOGLE_DRIVE_FOLDER_ID],
+        ignoredFolders: [`drafts`],
       },
     },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: ['gatsby-remark-images'],
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              linkImagesToOriginal: false,
+              maxWidth: 590,
+            },
+          },
+        ],
       },
     },
     `gatsby-plugin-sharp`,

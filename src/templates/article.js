@@ -6,13 +6,16 @@ import Layout from '../components/layout'
 
 export default ({
   data: {
-    markdownRemark: {
-      html,
-      frontmatter: {
-        name,
-        cover: {
-          image: {
-            childImageSharp: { fluid },
+    googleDocs: {
+      document: { createdTime },
+      childMarkdownRemark: {
+        html,
+        frontmatter: {
+          name,
+          cover: {
+            image: {
+              childImageSharp: { fluid },
+            },
           },
         },
       },
@@ -21,10 +24,15 @@ export default ({
 }) => {
   return (
     <Layout title={name}>
-      <section>
-        <h1 className="text-2xl lg:text-5xl font-bold border-b">{name}</h1>
-        <Image fluid={fluid} />
-        <div className="markdown" dangerouslySetInnerHTML={{ __html: html }} />
+      <section className="lg:w-2/3 mx-auto">
+        <Image fluid={fluid} className="mb-4" />
+        <h1 className="text-2xl lg:text-4xl font-bold">{name}</h1>
+        <p className="text-gray-700 italic text-sm">{createdTime}</p>
+        <hr className="mt-8 mb-16" />
+        <div
+          className="markdown font-sans"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
       </section>
     </Layout>
   )
@@ -32,15 +40,20 @@ export default ({
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    markdownRemark(frontmatter: { path: { eq: $slug } }) {
-      html
-      frontmatter {
-        name
-        cover {
-          image {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+    googleDocs(childMarkdownRemark: { frontmatter: { path: { eq: $slug } } }) {
+      document {
+        createdTime(formatString: "MMMM do, y")
+      }
+      childMarkdownRemark {
+        html
+        frontmatter {
+          name
+          cover {
+            image {
+              childImageSharp {
+                fluid(maxWidth: 590) {
+                  ...GatsbyImageSharpFluid_noBase64
+                }
               }
             }
           }

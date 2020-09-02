@@ -13,8 +13,7 @@ module.exports = {
       },
     }),
     fontFamily: {
-      sans: ['Helvetica'],
-      serif: ['Times New Roman'],
+      sans: ['Arial'],
       mono: ['Courier', 'Courier New', 'monospace'],
     },
   },
