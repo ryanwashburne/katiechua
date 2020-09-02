@@ -10,6 +10,14 @@ module.exports = {
     description: `Personal website for Katie Chua`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-107484926-2`,
+        anonymize: true,
+        respectDNT: true,
+      },
+    },
     `gatsby-plugin-eslint`,
     `gatsby-plugin-react-helmet`,
     {

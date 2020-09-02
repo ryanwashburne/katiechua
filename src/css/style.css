@@ -7,7 +7,7 @@ body {
 a {
   @apply underline;
 }
-a:active {
+a:focus {
   @apply text-black;
 }
 a:hover {
