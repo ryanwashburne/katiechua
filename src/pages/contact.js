@@ -29,7 +29,8 @@ export default () => {
     setSent(true)
   }
 
-  const handleChange = (e) => setState({ [e.target.name]: e.target.value })
+  const handleChange = (e) =>
+    setState({ ...state, [e.target.name]: e.target.value })
 
   const disabled =
     state.email.length === 0 || state.message.length === 0 || sent
