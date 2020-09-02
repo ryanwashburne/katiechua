@@ -1,6 +1,9 @@
 /*! purgecss start ignore */
 @tailwind base;
 
+body {
+  @apply font-mono;
+}
 a {
   @apply underline;
 }

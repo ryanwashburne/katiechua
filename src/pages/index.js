@@ -21,17 +21,13 @@ export default () => {
     }
   `)
   return (
-    <Layout padding={false}>
-      <section className="lg:h-screen grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <Layout>
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="flex items-center justify-center lg:justify-start text-center lg:text-left">
           <h1 className="text-4xl lg:text-6xl font-bold">
             Hi.
             <br />
-            I&apos;m{' '}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500">
-              Katie
-            </span>
-            .
+            I&apos;m Katie.
           </h1>
         </div>
         <div className="flex items-center">

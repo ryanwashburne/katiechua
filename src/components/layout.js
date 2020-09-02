@@ -5,7 +5,7 @@ import SEO from './seo'
 
 export default ({ title, padding = true, children }) => {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <SEO title={title} />
       <header className="fixed top-0 w-full h-12">
         <div className="container mx-auto flex items-center h-full">
@@ -20,11 +20,11 @@ export default ({ title, padding = true, children }) => {
           </div>
         </div>
       </header>
-      <div className={`h-12 lg:h-${padding ? 12 : 0}`} />
-      <main className="container mx-auto">{children}</main>
-      <footer className="absolute bottom-0 w-full border-r-2 border-gray-500 text-gray-500 text-center uppercase text-xs">
+      <div className={`h-12 lg:h-${padding ? 12 : 0} mt-8`} />
+      <main className="container mx-auto flex-grow">{children}</main>
+      <footer className="w-full text-gray-400 text-center uppercase text-xs">
         <p className="py-2">{new Date().getFullYear()} Katie Chua &copy;</p>
       </footer>
-    </>
+    </div>
   )
 }

@@ -23,7 +23,7 @@ export default () => {
   `)
   return (
     <Layout title="Archive">
-      <section>
+      <section className="flex flex-wrap">
         {edges.map(
           (
             {
@@ -37,14 +37,12 @@ export default () => {
               <Link
                 to={`/articles` + path}
                 key={i}
-                className="border mb-8 p-4 h-32 grid grid-cols-1 lg:grid-cols-2 gap-4 hover:bg-gray-100 hover:shadow no-underline"
+                className="border no-underline w-64 h-64 mr-4 mb-4 relative flex justify-center items-center hover:bg-gray-100 hover:shadow"
               >
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-xl font-bold">{name}</h3>
-                </div>
-                <div className="flex flex-col justify-center">
-                  {/* <Image fluid={fluid} /> */}
-                </div>
+                <h3 className="font-mono text-xl font-bold">{name}</h3>
+                <p className="absolute text-sm" style={{ top: 5, left: 5 }}>
+                  September 2nd, 2020
+                </p>
               </Link>
             )
           },
