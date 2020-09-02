@@ -3,13 +3,36 @@ import React, { useState } from 'react'
 import Layout from '../components/layout'
 
 export default () => {
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
   const [sent, setSent] = useState(false)
-  function handleSubmit() {
+  const [state, setState] = useState({
+    email: '',
+    message: '',
+  })
+
+  function handleSubmit(e) {
+    const encode = (data) => {
+      return Object.keys(data)
+        .map(
+          (key) =>
+            encodeURIComponent(key) + '=' + encodeURIComponent(data[key]),
+        )
+        .join('&')
+    }
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...state }),
+    })
+
+    e.preventDefault()
     setSent(true)
   }
-  const disabled = email.length === 0 || message.length === 0 || sent
+
+  const handleChange = (e) => setState({ [e.target.name]: e.target.value })
+
+  const disabled =
+    state.email.length === 0 || state.message.length === 0 || sent
   return (
     <Layout title="Contact">
       <section>
@@ -28,15 +51,17 @@ export default () => {
               type="email"
               placeholder="Email *"
               className="form-input w-full"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={state.email}
+              onChange={handleChange}
+              name="email"
             />
             <textarea
               className="form-textarea mt-2 mb-4 w-full"
               rows="3"
               placeholder="Write your message *"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={state.message}
+              onChange={handleChange}
+              name="message"
             ></textarea>
             <button
               className={`text-lg px-3 py-1 rounded hover:bg-gray-200 hover:shadow border ${
