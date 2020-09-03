@@ -51,8 +51,10 @@ export default () => {
                 key={i}
                 className="border border-black no-underline w-full lg:w-64 h-48 lg:h-64 mr-2 mb-2 relative flex justify-center items-center hover:bg-gray-100 hover:shadow"
               >
-                <div className="p-2 truncate w-full text-center">
-                  <h3 className="font-mono text-xl font-bold">{name}</h3>
+                <div className="p-2 w-full text-center">
+                  <h3 className="font-mono text-lg lg:text-xl font-bold truncate">
+                    {name}asdasdasdasd asdasd
+                  </h3>
                   <p className="text-xs truncate w-full">{excerpt}</p>
                 </div>
                 <p className="p-2 absolute text-xs italic text-gray-700 top-0 left-0">
