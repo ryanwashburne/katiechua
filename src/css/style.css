@@ -7,9 +7,6 @@ body {
 a {
   @apply underline;
 }
-a:focus {
-  @apply text-black;
-}
 a:hover {
   @apply text-gray-700;
 }

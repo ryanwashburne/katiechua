@@ -30,7 +30,7 @@ export default () => {
   `)
   return (
     <Layout title="Archive">
-      <section className="flex flex-wrap">
+      <section className="flex flex-wrap w-full">
         {edges.map(
           (
             {
@@ -49,19 +49,19 @@ export default () => {
               <Link
                 to={`/articles/${id}${path}`}
                 key={i}
-                className="border border-black no-underline w-full lg:w-64 h-48 lg:h-64 mr-2 mb-2 relative flex justify-center items-center hover:bg-gray-100 hover:shadow"
+                className="border border-black no-underline w-full lg:w-64 h-48 lg:h-64 lg:mr-2 mb-2 relative flex justify-center items-center hover:bg-gray-100 hover:shadow"
               >
-                <div className="p-2 w-full text-center">
+                <div className="p-2 text-center w-full">
                   <h3 className="font-mono text-lg lg:text-xl font-bold truncate">
                     {name}
                   </h3>
-                  <p className="text-xs truncate w-full">{excerpt}</p>
+                  <p className="text-sm truncate">{excerpt}</p>
                 </div>
-                <p className="p-2 absolute text-xs italic text-gray-700 top-0 left-0">
+                <p className="p-2 absolute w-full text-xs italic text-gray-600 top-0 left-0 text-center lg:text-left">
                   {createdTime}
                 </p>
-                <p className="p-2 absolute text-xs italic text-gray-700 bottom-0 left-0">
-                  {timeToRead} minute read
+                <p className="p-2 absolute w-full text-xs italic text-gray-600 bottom-0 left-0 text-center lg:text-left">
+                  {timeToRead} min read
                 </p>
               </Link>
             )

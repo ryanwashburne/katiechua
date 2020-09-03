@@ -10,25 +10,22 @@ export default ({
       document: { createdTime },
       childMarkdownRemark: {
         html,
-        frontmatter: {
-          name,
-          cover: {
-            image: {
-              childImageSharp: { fluid },
-            },
-          },
-        },
+        timeToRead,
+        frontmatter: { name, cover },
       },
     },
   },
 }) => {
+  const fluid = cover?.image?.childImageSharp?.fluid
   return (
     <Layout title={name}>
       <section className="lg:w-2/3 mx-auto">
-        <Image fluid={fluid} className="mb-4" />
+        {fluid && <Image fluid={fluid} className="mb-4" />}
         <h1 className="text-2xl lg:text-4xl font-bold">{name}</h1>
-        <p className="text-gray-700 italic text-sm">{createdTime}</p>
-        <hr className="mt-8 mb-16" />
+        <p className="text-gray-600 italic text-sm">
+          {createdTime} &bull; {timeToRead} min read
+        </p>
+        <hr className="mt-4 mb-16" />
         <div
           className="markdown font-sans"
           dangerouslySetInnerHTML={{ __html: html }}
@@ -46,6 +43,7 @@ export const pageQuery = graphql`
       }
       childMarkdownRemark {
         html
+        timeToRead
         frontmatter {
           name
           cover {
