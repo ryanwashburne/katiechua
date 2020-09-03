@@ -53,7 +53,7 @@ export default () => {
               >
                 <div className="p-2 w-full text-center">
                   <h3 className="font-mono text-lg lg:text-xl font-bold truncate">
-                    {name}asdasdasdasd asdasd
+                    {name}
                   </h3>
                   <p className="text-xs truncate w-full">{excerpt}</p>
                 </div>
