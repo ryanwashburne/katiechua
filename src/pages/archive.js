@@ -21,7 +21,7 @@ export default () => {
             document {
               id
               path
-              createdTime(formatString: "MMMM do, y")
+              createdTime(formatString: "MMMM Do, y")
             }
           }
         }

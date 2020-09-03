@@ -39,7 +39,7 @@ export const pageQuery = graphql`
   query($slug: String!) {
     googleDocs(childMarkdownRemark: { frontmatter: { path: { eq: $slug } } }) {
       document {
-        createdTime(formatString: "MMMM do, y")
+        createdTime(formatString: "MMMM Do, y")
       }
       childMarkdownRemark {
         html
@@ -50,7 +50,7 @@ export const pageQuery = graphql`
             image {
               childImageSharp {
                 fluid(maxWidth: 590) {
-                  ...GatsbyImageSharpFluid_noBase64
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }

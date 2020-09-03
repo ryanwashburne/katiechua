@@ -22,7 +22,7 @@ export default ({ title, children }) => {
       </header>
       <div className="h-12 mb-16" />
       <main className="container mx-auto flex-grow">{children}</main>
-      <footer className="w-full text-gray-400 text-center uppercase text-xs pt-16 pb-2">
+      <footer className="w-full text-gray-500 text-center uppercase text-xs pt-16 pb-4">
         <p>{new Date().getFullYear()} Katie Chua &copy;</p>
       </footer>
     </div>

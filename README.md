@@ -1,27 +1,17 @@
 # Katie Chua
 
-#### How to get Google Credentials
+### How to get Google Credentials
 
-1. Visit [site](https://developers.google.com/docs/api/quickstart/js)
-
-- Click "Enable the Google Docs API"
-  - Click "Next"
-  - Copy the **Client ID**
-  - Copy the **Client Secret**
-- Click "Create API Key"
-  - Copy **Your API Key**
-
-2. Visit [site](https://developers.google.com/drive/api/v3/quickstart/nodejs)
+1. Visit [site](https://developers.google.com/drive/api/v3/quickstart/nodejs)
 
 - Click "Enable the Drive API"
-  - Provide any name you prefer
   - Select **Desktop App** and click **Create**
   - Copy the **Client ID**
   - Copy the **Client Secret**
 
-3. Run `yarn gatsby-source-google-docs-token`
+2. Run `yarn gatsby-source-google-docs-token`
 
-- Close the popup window
+- Close the popup window\(s\)
 - Enter your **Client ID** from above
 - Enter your **Client Secret** from above
 - It _should_ redirect you to a sign-in window
@@ -29,3 +19,5 @@
 - Click **Allow**
 - Click **Allow**
 - Click **Allow**
+
+3. If warning pops up in terminal, visit site and enable API

@@ -51,12 +51,11 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    // https://developers.google.com/drive/api/v3/quickstart/nodejs
-    // https://developers.google.com/docs/api/quickstart/js
     {
       resolve: `gatsby-source-google-docs`,
       options: {
         folders: [process.env.GOOGLE_DRIVE_FOLDER_ID],
+        // fields: [`imageMediaMetadata`],
         ignoredFolders: [`drafts`],
       },
     },
