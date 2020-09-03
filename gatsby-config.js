@@ -55,7 +55,6 @@ module.exports = {
       resolve: `gatsby-source-google-docs`,
       options: {
         folders: [process.env.GOOGLE_DRIVE_FOLDER_ID],
-        // fields: [`imageMediaMetadata`],
         ignoredFolders: [`drafts`],
       },
     },
@@ -70,6 +69,7 @@ module.exports = {
               maxWidth: 590,
             },
           },
+          `gatsby-remark-external-links`,
         ],
       },
     },
