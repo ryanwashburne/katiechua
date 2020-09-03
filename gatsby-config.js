@@ -76,5 +76,11 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-offline`,
+    {
+      resolve: '@mkitio/gatsby-theme-password-protect',
+      options: {
+        password: process.env.GATSBY_WEBSITE_PASSWORD,
+      },
+    },
   ],
 }
