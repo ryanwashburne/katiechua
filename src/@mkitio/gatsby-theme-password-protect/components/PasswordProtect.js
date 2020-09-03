@@ -13,7 +13,7 @@ export default () => {
     window.location.reload()
   }
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="min-h-screen flex flex-col justify-center items-center">
       <form onSubmit={handleSubmit} className="w-1/2 lg:w-1/4">
         <input
           className="form-input w-full mb-4"
