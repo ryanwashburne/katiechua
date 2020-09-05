@@ -76,8 +76,17 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify-cache`,
     {
-      resolve: '@mkitio/gatsby-theme-password-protect',
+      resolve: `gatsby-plugin-netlify-admin`,
+      options: {
+        adminPath: `${__dirname}/src/admin`,
+        adminUri: `/admin`,
+        loginUri: `/admin/login`,
+      },
+    },
+    {
+      resolve: `@mkitio/gatsby-theme-password-protect`,
       options: {
         password: process.env.GATSBY_WEBSITE_PASSWORD,
       },
