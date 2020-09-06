@@ -11,6 +11,21 @@ a:hover {
   @apply text-gray-700;
 }
 
+button {
+  @apply px-3;
+  @apply py-1;
+  @apply rounded;
+  @apply border;
+}
+button:hover {
+  @apply bg-gray-200;
+  @apply shadow;
+}
+button:disabled {
+  @apply opacity-50;
+  @apply cursor-not-allowed;
+}
+
 @tailwind components;
 /*! purgecss end ignore */
 @tailwind utilities;

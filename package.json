@@ -32,13 +32,17 @@
     "fix:lint": "eslint --ext .jsx --ext .js . --fix",
     "fix:prettier": "prettier --write \"**/*.{css,js,jsx,json,md}\"",
     "fix": "npm run fix:lint && npm run fix:prettier",
-    "build": "gatsby build",
     "develop": "gatsby develop",
     "dev": "npm run develop",
-    "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "clean:drive": "rimraf src/content"
+    "clean:drive": "rimraf src/content",
+    "start": "run-p start:**",
+    "start:app": "npm run develop",
+    "start:lambda": "export NODE_ENV=development && netlify-lambda serve src/functions",
+    "build": "gatsby build && netlify-lambda build src/functions",
+    "build:app": "gatsby build",
+    "build:lambda": "netlify-lambda build src/functions"
   },
   "devDependencies": {
     "@tailwindcss/custom-forms": "0.2.1",
@@ -50,6 +54,11 @@
     "eslint-plugin-import": "2.22.0",
     "eslint-plugin-react": "7.20.6",
     "gatsby-plugin-eslint": "2.0.8",
+    "http-proxy-middleware": "^1.0.5",
+    "netlify": "^4.3.13",
+    "netlify-lambda": "^2.0.1",
+    "node-fetch": "^2.6.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "2.1.0",
     "tailwindcss": "1.7.3"
   }

@@ -26,12 +26,8 @@ export default () => {
           onChange={(e) => setInput(e.target.value)}
           value={input}
           placeholder="Password"
-          autoFocus
         />
-        <button
-          className="text-lg px-3 py-1 rounded hover:bg-gray-200 hover:shadow border"
-          type="submit"
-        >
+        <button className="text-xl" type="submit">
           Submit
         </button>
         <p className={`text-red-500 mt-4 ${initial ? '' : 'invisible'}`}>

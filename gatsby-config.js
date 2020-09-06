@@ -1,10 +1,30 @@
+const { createProxyMiddleware } = require('http-proxy-middleware')
 const resolveConfig = require('tailwindcss/resolveConfig')
 const tailwindConfig = require('./tailwind.config.js')
 
 const fullConfig = resolveConfig(tailwindConfig)
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
+let password = process.env.GATSBY_WEBSITE_PASSWORD
+try {
+  console.log(process.env.INCOMING_HOOK_BODY)
+  const parsed = JSON.parse(process.env.INCOMING_HOOK_BODY)
+  console.log(parsed)
+  password = parsed.password
+} catch (_) {}
+
 module.exports = {
+  developMiddleware: (app) => {
+    app.use(
+      '/.netlify/functions/',
+      createProxyMiddleware({
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '/.netlify/functions/': '',
+        },
+      }),
+    )
+  },
   siteMetadata: {
     title: `Katie Chua`,
     description: `Personal website for Katie Chua`,
@@ -24,7 +44,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Katie Chua`,
-        short_name: `KC`,
+        short_name: `Katie Chua`,
         start_url: `/`,
         background_color: fullConfig.theme.colors.white,
         theme_color: fullConfig.theme.colors.black,
@@ -88,7 +108,7 @@ module.exports = {
     {
       resolve: `@mkitio/gatsby-theme-password-protect`,
       options: {
-        password: process.env.GATSBY_WEBSITE_PASSWORD,
+        password,
       },
     },
   ],

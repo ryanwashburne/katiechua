@@ -64,13 +64,7 @@ export default () => {
               onChange={handleChange}
               name="message"
             ></textarea>
-            <button
-              className={`text-lg px-3 py-1 rounded hover:bg-gray-200 hover:shadow border ${
-                disabled ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-              type="submit"
-              disabled={disabled}
-            >
+            <button className="text-lg" type="submit" disabled={disabled}>
               Submit
             </button>
           </form>

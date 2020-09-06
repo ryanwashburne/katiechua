@@ -10,10 +10,7 @@ export default ({ netlifyLogin, netlifyAdminStatus }) => {
   }
   return (
     <Layout title="Login">
-      <button
-        className="text-lg px-3 py-1 rounded hover:bg-gray-200 hover:shadow border w-full"
-        onClick={netlifyLogin}
-      >
+      <button className="text-lg" onClick={netlifyLogin}>
         Click to Log In
       </button>
     </Layout>
