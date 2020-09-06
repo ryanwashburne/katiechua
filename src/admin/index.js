@@ -38,6 +38,7 @@ export default ({ netlifyAdminStatus, netlifyLogout }) => {
       `/.netlify/functions/newDeploy${password ? '?password=' + password : ''}`,
     )
     alert('Build triggered. ETA 3-5 minutes')
+    window.location.reload()
   }
 
   return (

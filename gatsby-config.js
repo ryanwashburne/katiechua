@@ -7,11 +7,7 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 let password = process.env.GATSBY_WEBSITE_PASSWORD
 try {
-  console.log('YYYY')
-  console.log(process.env.INCOMING_HOOK_BODY)
   const parsed = JSON.parse(process.env.INCOMING_HOOK_BODY)
-  console.log('ZZZZ')
-  console.log(parsed)
   password = parsed.password
 } catch (_) {}
 
