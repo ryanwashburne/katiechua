@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+const fetch = require('node-fetch').default
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 exports.handler = async (event, context) => {
@@ -15,13 +15,13 @@ exports.handler = async (event, context) => {
     if (newPassword) {
       body.password = newPassword
     }
-    // await fetch(
-    //   process.env.NETLIFY_BUILD_URL + '?trigger_title=triggered+by+admin',
-    //   {
-    //     method: 'POST',
-    //     body: JSON.stringify(body),
-    //   },
-    // )
+    await fetch(
+      process.env.NETLIFY_BUILD_URL + '?trigger_title=triggered+by+admin',
+      {
+        method: 'POST',
+        body: JSON.stringify(body),
+      },
+    )
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'ok' }),

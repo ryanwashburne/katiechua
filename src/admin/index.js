@@ -46,7 +46,7 @@ export default ({ netlifyAdminStatus, netlifyLogout }) => {
         <div className="shadow border rounded p-4">
           <h3 className="text-2xl">Admin</h3>
           <p className="italic text-sm text-gray-600">
-            {netlifyAdminStatus.user.email}
+            {netlifyAdminStatus?.user?.email}
           </p>
           <div className="mt-4">
             <button
@@ -64,8 +64,16 @@ export default ({ netlifyAdminStatus, netlifyLogout }) => {
             Site status: <b>{state ? state : 'Loading...'}</b>
           </p>
           <div>
-            <button onClick={handleSubmit}>Trigger Site Redeploy</button>
+            <button
+              onClick={handleSubmit}
+              disabled={String(state).toLowerCase() !== 'ready'}
+            >
+              Trigger Site Redeploy
+            </button>
           </div>
+          {/* <div>
+          <input className="mr-2 leading-tight" type="checkbox" />
+          </div> */}
         </div>
       </section>
     </Layout>
