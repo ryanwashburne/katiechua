@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
   try {
     const body = {}
     const newPassword = event?.queryStringParameters?.password
-    if (newPassword) {
+    if (newPassword && newPassword.length > 0) {
       body.password = newPassword
     }
     await fetch(

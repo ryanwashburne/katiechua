@@ -5,10 +5,12 @@ const tailwindConfig = require('./tailwind.config.js')
 const fullConfig = resolveConfig(tailwindConfig)
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
-let password = process.env.GATSBY_WEBSITE_PASSWORD
+let sitePassword = process.env.GATSBY_WEBSITE_PASSWORD
 try {
-  const parsed = JSON.parse(process.env.INCOMING_HOOK_BODY)
-  password = parsed.password
+  const { password } = JSON.parse(process.env.INCOMING_HOOK_BODY)
+  if (password.length > 0) {
+    sitePassword = parsed.password
+  }
 } catch (_) {}
 
 module.exports = {
@@ -106,7 +108,7 @@ module.exports = {
     {
       resolve: `@mkitio/gatsby-theme-password-protect`,
       options: {
-        password,
+        password: sitePassword,
       },
     },
   ],
